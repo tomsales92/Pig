@@ -7,6 +7,10 @@ class ExpensesRepository {
     this.expenses = [];
   }
 
+  public all(): Expense[] {
+    return this.expenses;
+  }
+
   public create(name: string, value: number, date: Date): Expense {
     const expense = new Expense(name, value, date);
     this.expenses.push(expense);

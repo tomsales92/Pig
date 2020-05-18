@@ -5,6 +5,11 @@ const expensesRouter = Router();
 
 const expensesRepository = new ExpensesRepository();
 
+expensesRouter.get('/', (request, response) => {
+  const expense = expensesRepository.all();
+  return response.json(expense);
+});
+
 expensesRouter.post('/', (request, response) => {
   const { name, value, date } = request.body;
 
