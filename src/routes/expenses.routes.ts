@@ -1,16 +1,15 @@
 import { Router } from 'express';
-import Expense from '../models/Expense';
+import ExpensesRepository from '../repositories/expensesRepository';
 
 const expensesRouter = Router();
 
-const expenses: Expense[] = [];
+const expensesRepository = new ExpensesRepository();
 
 expensesRouter.post('/', (request, response) => {
   const { name, value, date } = request.body;
 
-  const expense = new Expense(name, value, date);
+  const expense = expensesRepository.create(name, value, date);
 
-  expenses.push(expense);
   return response.json(expense);
 });
 
