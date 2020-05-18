@@ -1,19 +1,15 @@
 import { Router } from 'express';
-import { uuid } from 'uuidv4';
+import Expense from '../models/Expense';
 
 const expensesRouter = Router();
 
-const expenses = [];
+const expenses: Expense[] = [];
 
 expensesRouter.post('/', (request, response) => {
   const { name, value, date } = request.body;
 
-  const expense = {
-    id: uuid(),
-    name,
-    value,
-    date,
-  };
+  const expense = new Expense(name, value, date);
+
   expenses.push(expense);
   return response.json(expense);
 });
