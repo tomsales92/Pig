@@ -1,5 +1,11 @@
 import Expense from '../models/Expense';
 
+interface CreateInterfaceDTO {
+  name: string;
+  value: number;
+  date: Date;
+}
+
 class ExpensesRepository {
   private expenses: Expense[];
 
@@ -11,8 +17,8 @@ class ExpensesRepository {
     return this.expenses;
   }
 
-  public create(name: string, value: number, date: Date): Expense {
-    const expense = new Expense(name, value, date);
+  public create({ name, value, date }: CreateInterfaceDTO): Expense {
+    const expense = new Expense({ name, value, date });
     this.expenses.push(expense);
 
     return expense;

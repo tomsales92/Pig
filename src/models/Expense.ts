@@ -9,7 +9,7 @@ class Expense {
 
   date: Date;
 
-  constructor(name: string, value: number, date: Date) {
+  constructor({ name, value, date }: Omit<Expense, 'id'>) {
     this.id = uuid();
     this.name = name;
     this.value = value;

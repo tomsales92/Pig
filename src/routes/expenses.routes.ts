@@ -13,7 +13,11 @@ expensesRouter.get('/', (request, response) => {
 expensesRouter.post('/', (request, response) => {
   const { name, value, date } = request.body;
 
-  const expense = expensesRepository.create(name, value, date);
+  const expense = expensesRepository.create({
+    name,
+    value,
+    date,
+  });
 
   return response.json(expense);
 });
